@@ -18,12 +18,12 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
 # If an image is uploaded
 if uploaded_file is not None:
-    # Load the image and make it compatible with the model input (32, 256, 256, 3)
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
-    image = np.array(image.resize((256, 256)))
-    image = np.expand_dims(image, axis=0)
-    image = image / 255.0
+    # Load the image and make it compatible with the model input (1, 256, 256, 1) (gray scale image)
+    image = Image.open(uploaded_file).resize((256, 256)).convert('L')
+    image = np.expand_dims(np.array(image), axis=0)
+
+    # Display the image
+    st.image(image[0], caption='Uploaded Image.', use_column_width=True)
 
     # Get the prediction of the model
     prediction = model.predict(image)
@@ -36,9 +36,9 @@ if uploaded_file is not None:
     if prediction[0][0] > 0.5:
         st.markdown('The model predicts that there **is a tumor** in the image.')
         # Display the probability of the prediction
-        probability = round((prediction[0][0] - 0.5), 4)
+        probability = round(((prediction[0][0] - 0.5) / 0.5), 4)
 
-        print((prediction[0][0]- 0.5) * 100)
+        print(round(((prediction[0][0] - 0.5) / 0.5), 4))
 
     else:
         st.markdown('The model predicts that there **is no tumor** in the image.')
