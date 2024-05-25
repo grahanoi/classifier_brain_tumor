@@ -5,10 +5,39 @@ import tensorflow as tf
 import os
 
 # Load the model in the model folder
-model = tf.keras.models.load_model(os.path.join('model', 'brain_tumor_classifier.keras'))
+model = tf.keras.models.load_model(os.path.join("C:/Git_Repos/NeuNe/classifier_brain_tumor/model/brain_tumor_classifier.keras"))
 
 # Title of the webserver
 st.title('Brain Tumor Classifier')
+
+# Analysis of Brain Tumor Image Dataset
+st.markdown('### Analysis of Brain Tumor Image Dataset')
+
+st.markdown("""- **Number of images in the "Tumor" folder:** 1683
+- **Number of images in the "Non-Tumor" folder:** 2079
+
+#### Relevant Data Features
+For the project, the key features to focus on are the visual characteristics of the MRI images that distinguish tumor from non-tumor cases. These features include:
+
+- **Shape and Size:** Tumors usually have irregular shapes and varying sizes compared to normal brain tissue.
+- **Texture:** Tumor regions often have different texture patterns compared to non-tumor regions.
+- **Intensity:** The intensity values (brightness and contrast) in tumor regions can differ significantly from those in healthy brain tissue.""")
+
+# Results of the trained model
+st.markdown('### Results of the trained model')
+
+# Display the accuracy and loss
+st.markdown('### Accuracy and loss')
+st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/accuracy_loss.png', caption='Accuracy and loss')
+
+# Display the precsion of the model
+st.markdown('### Precision')
+st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/precision_valprecision.png', caption='Precision')
+
+# Display confusion matrix
+st.markdown('### Confusion Matrix')
+st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/confusion_matrix.png', caption='Confusion Matrix')
+
 
 # Upload an image
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
