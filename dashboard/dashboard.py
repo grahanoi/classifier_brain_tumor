@@ -12,16 +12,7 @@ st.title('Brain Tumor Classifier')
 
 # Analysis of Brain Tumor Image Dataset
 st.markdown('### Analysis of Brain Tumor Image Dataset')
-
-st.markdown("""- **Number of images in the "Tumor" folder:** 1683
-- **Number of images in the "Non-Tumor" folder:** 2079
-
-#### Relevant Data Features
-For the project, the key features to focus on are the visual characteristics of the MRI images that distinguish tumor from non-tumor cases. These features include:
-
-- **Shape and Size:** Tumors usually have irregular shapes and varying sizes compared to normal brain tissue.
-- **Texture:** Tumor regions often have different texture patterns compared to non-tumor regions.
-- **Intensity:** The intensity values (brightness and contrast) in tumor regions can differ significantly from those in healthy brain tissue.""")
+st.image('dashboard/original_data.png', caption='Original Data')
 
 # Results of the trained model
 st.markdown('### Results of the trained model')
