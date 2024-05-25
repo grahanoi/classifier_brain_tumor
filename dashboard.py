@@ -5,7 +5,7 @@ import tensorflow as tf
 import os
 
 # Load the model in the model folder
-model = tf.keras.models.load_model(os.path.join("C:/Git_Repos/NeuNe/classifier_brain_tumor/model/brain_tumor_classifier.keras"))
+model = tf.keras.models.load_model(os.path.join("model", "brain_tumor_classifier.keras"))
 
 # Title of the webserver
 st.title('Brain Tumor Classifier')
@@ -28,15 +28,15 @@ st.markdown('### Results of the trained model')
 
 # Display the accuracy and loss
 st.markdown('### Accuracy and loss')
-st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/accuracy_loss.png', caption='Accuracy and loss')
+st.image('data/accuracy_loss.png', caption='Accuracy and loss')
 
 # Display the precsion of the model
 st.markdown('### Precision')
-st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/precision_valprecision.png', caption='Precision')
+st.image('data/precision_valprecision.png', caption='Precision')
 
 # Display confusion matrix
 st.markdown('### Confusion Matrix')
-st.image('C:/Git_Repos/NeuNe/classifier_brain_tumor/data/confusion_matrix.png', caption='Confusion Matrix')
+st.image('data/confusion_matrix.png', caption='Confusion Matrix')
 
 
 # Upload an image
