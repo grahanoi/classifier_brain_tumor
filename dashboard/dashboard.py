@@ -20,6 +20,17 @@ st.markdown("""
 - **Texture** 
 - **Intensity**""")
 
+# Model Architecture
+st.markdown('### Model Architecture')
+st.markdown("""
+- **Convolutional Neural Network**
+- **Binary Classification**
+- **Conv2D (Convolutional 2D) - 3 layers**
+- **MaxPooling2D - 3 layers**
+- **Flatten - 1 layer**
+- **Dense - 2 layers**
+            """)
+
 # Results of the trained model
 st.markdown('### Results of the trained model')
 
