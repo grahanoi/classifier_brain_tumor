@@ -1,11 +1,8 @@
-## A webserver with streamlit to display the results of the model with the posibility to upload a new image and get the prediction of the model
-
 import streamlit as st
 from PIL import Image
 import numpy as np
 import tensorflow as tf
 import os
-
 
 # Load the model in the model folder
 model = tf.keras.models.load_model(os.path.join('model', 'brain_tumor_classifier.keras'))
@@ -38,15 +35,15 @@ if uploaded_file is not None:
         # Display the probability of the prediction
         probability = round(((prediction[0][0] - 0.5) / 0.5), 4)
 
-        print(round(((prediction[0][0] - 0.5) / 0.5), 4))
+        print(f"{round(((prediction[0][0] - 0.5) / 0.5), 4)}")
 
     else:
         st.markdown('The model predicts that there **is no tumor** in the image.')
         probability = round(((0.5 - prediction[0][0]) / 0.5 ), 4)
 
-        print((0.5 - prediction[0][0])/ 0.5 * 100)
+        print(f"{round(0.5 - prediction[0][0])/ 0.5 * 100} %")
 
-    print(prediction[0][0])
+    print(f"Prediction value: {prediction[0][0]}")
 
     if probability < 0.5:
         st.markdown('***The model is **not very confident** in its prediction.***')
