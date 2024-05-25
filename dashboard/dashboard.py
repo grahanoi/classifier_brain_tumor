@@ -28,15 +28,15 @@ st.markdown('### Results of the trained model')
 
 # Display the accuracy and loss
 st.markdown('### Accuracy and loss')
-st.image('data/accuracy_loss.png', caption='Accuracy and loss')
+st.image('dashboard/accuracy_loss.png', caption='Accuracy and loss')
 
 # Display the precsion of the model
 st.markdown('### Precision')
-st.image('data/precision_valprecision.png', caption='Precision')
+st.image('dashboard/precision_valprecision.png', caption='Precision')
 
 # Display confusion matrix
 st.markdown('### Confusion Matrix')
-st.image('data/confusion_matrix.png', caption='Confusion Matrix')
+st.image('dashboard/confusion_matrix.png', caption='Confusion Matrix')
 
 
 # Upload an image
