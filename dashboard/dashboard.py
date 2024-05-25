@@ -14,6 +14,12 @@ st.title('Brain Tumor Classifier')
 st.markdown('### Analysis of Brain Tumor Image Dataset')
 st.image('dashboard/original_data.png', caption='Original Data')
 
+st.markdown('### Relevant Data Features')
+st.markdown("""
+- **Shape and Size** 
+- **Texture** 
+- **Intensity**""")
+
 # Results of the trained model
 st.markdown('### Results of the trained model')
 
