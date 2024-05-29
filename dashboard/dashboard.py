@@ -143,3 +143,15 @@ with st.expander('Click here to see more information about the model'):
     st.write('Model Layers:')
     st.write(model.layers)
 
+
+# Display the conclusion
+if data['presentation_mode'] and uploaded_file is not None:
+    st.markdown('### Next Steps')
+    st.markdown("""
+    - **Bigger Model**
+    - **Data Augmentation**
+    - **More Data**
+    - **Additional Feature**
+    - **Fine Tuning**
+    """)
+                
