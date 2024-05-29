@@ -7,8 +7,14 @@ import os
 # Load the model in the model folder
 model = tf.keras.models.load_model(os.path.join("model", "brain_tumor_classifier.keras"))
 
+# Create a session file to store settings in the dashboard/data folder
+st.set_page_config(page_title='Brain Tumor Classifier', page_icon='🧠', initial_sidebar_state='auto')
+
+
 # Title of the webserver
 st.title('Brain Tumor Classifier')
+
+
 
 # Analysis of Brain Tumor Image Dataset
 st.markdown('### Analysis of Brain Tumor Image Dataset')
@@ -19,6 +25,11 @@ st.markdown("""
 - **Shape and Size** 
 - **Texture** 
 - **Intensity**""")
+
+st.markdown('### Classes')
+st.markdown("""
+- **No Tumor**
+- **Tumor**""")
 
 # Model Architecture
 st.markdown('### Model Architecture')
