@@ -10,52 +10,82 @@ model = tf.keras.models.load_model(os.path.join("model", "brain_tumor_classifier
 # Create a session file to store settings in the dashboard/data folder
 st.set_page_config(page_title='Brain Tumor Classifier', page_icon='🧠', initial_sidebar_state='auto')
 
+if not os.path.exists('dashboard/data'):
+    os.makedirs('dashboard/data')
+
+# If the session file not exists, create it
+if not os.path.exists('dashboard/data/session.txt'):
+    # define presentation mode as false
+    data = {'presentation_mode': False}
+    # write the data to the session file
+    with open('dashboard/data/session.txt', 'w') as f:
+        f.write(str(data))
+
+# load the session file
+with open('dashboard/data/session.txt', 'r') as f:
+    data = f.read()
+    data = eval(data)
 
 # Title of the webserver
 st.title('Brain Tumor Classifier')
 
+# Button to toggle the presentation mode
+if st.button('Toggle Presentation Mode'):
+    # If the presentation mode is true, set it to false
+    if data['presentation_mode']:
+        data['presentation_mode'] = False
+    # If the presentation mode is false, set it to true
+    else:
+        data['presentation_mode'] = True
 
+    # Write the data to the session file
+    with open('dashboard/data/session.txt', 'w') as f:
+        f.write(str(data))
 
-# Analysis of Brain Tumor Image Dataset
-st.markdown('### Analysis of Brain Tumor Image Dataset')
-st.image('dashboard/original_data.png', caption='Original Data')
+# If the presentation mode is true, set the presentation mode to true
+if data['presentation_mode']:
+    
 
-st.markdown('### Relevant Data Features')
-st.markdown("""
-- **Shape and Size** 
-- **Texture** 
-- **Intensity**""")
+    # Analysis of Brain Tumor Image Dataset
+    st.markdown('### Analysis of Brain Tumor Image Dataset')
+    st.image('dashboard/data/original_data.png', caption='Original Data')
 
-st.markdown('### Classes')
-st.markdown("""
-- **No Tumor**
-- **Tumor**""")
+    st.markdown('### Relevant Data Features')
+    st.markdown("""
+    - **Shape and Size** 
+    - **Texture** 
+    - **Intensity**""")
 
-# Model Architecture
-st.markdown('### Model Architecture')
-st.markdown("""
-- **Convolutional Neural Network**
-- **Binary Classification**
-- **Conv2D (Convolutional 2D) - 3 layers**
-- **MaxPooling2D - 3 layers**
-- **Flatten - 1 layer**
-- **Dense - 2 layers**
-            """)
+    st.markdown('### Classes')
+    st.markdown("""
+    - **No Tumor**
+    - **Tumor**""")
 
-# Results of the trained model
-st.markdown('### Results of the trained model')
+    # Model Architecture
+    st.markdown('### Model Architecture')
+    st.markdown("""
+    - **Convolutional Neural Network**
+    - **Binary Classification**
+    - **Conv2D (Convolutional 2D) - 3 layers**
+    - **MaxPooling2D - 3 layers**
+    - **Flatten - 1 layer**
+    - **Dense - 2 layers**
+                """)
 
-# Display the accuracy and loss
-st.markdown('#### Accuracy and loss')
-st.image('dashboard/accuracy_loss.png', caption='Accuracy and loss')
+    # Results of the trained model
+    st.markdown('### Results of the trained model')
 
-# Display the precsion of the model
-st.markdown('#### Precision and recall')
-st.image('dashboard/precision_recall.png', caption='Precision and recall')
+    # Display the accuracy and loss
+    st.markdown('#### Accuracy and loss')
+    st.image('dashboard/data/accuracy_loss.png', caption='Accuracy and loss')
 
-# Display confusion matrix
-st.markdown('#### Confusion Matrix')
-st.image('dashboard/confusion_matrix.png', caption='Confusion Matrix')
+    # Display the precsion of the model
+    st.markdown('#### Precision and recall')
+    st.image('dashboard/data/precision_recall.png', caption='Precision and recall')
+
+    # Display confusion matrix
+    st.markdown('#### Confusion Matrix')
+    st.image('dashboard/data/confusion_matrix.png', caption='Confusion Matrix')
 
 
 # Upload an image
