@@ -154,4 +154,3 @@ if data['presentation_mode'] and uploaded_file is not None:
     - **Additional Feature**
     - **Fine Tuning**
     """)
-                
